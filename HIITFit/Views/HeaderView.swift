@@ -28,29 +28,36 @@
 /// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 /// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-///
 /// THE SOFTWARE.
 
 import SwiftUI
 
-struct ExerciseView: View {
-    let videoNames = ["squat", "step-up", "burpee", "sun-salute"]
-    let exerciseNames = ["Squat", "Step Up", "Burpee", "Sun Salute"]
-    let index: Int
+struct HeaderView: View {
+    let exerciseName: String
     var body: some View {
         VStack {
-            HeaderView(exerciseName: exerciseNames[index])
-            Text("Video player")
-            Text("Timer")
-            Text("Start/Done button")
-            Text("Rating")
-            Text("History button")
+            Text(exerciseName)
+                .font(.largeTitle)
+            HStack {
+                Image(systemName: "1.circle")
+                Image(systemName: "2.circle")
+                Image(systemName: "3.circle")
+                Image(systemName: "4.circle")
+            }
+            .font(.title2)
         }
     }
 }
 
-struct ExerciseView_Previews: PreviewProvider {
+struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseView(index: 0)
+        Group {
+            HeaderView(exerciseName: "Squat")
+                .previewLayout(.sizeThatFits)
+            HeaderView(exerciseName: "Squat")
+                .preferredColorScheme(.dark)
+                .environment(\.sizeCategory, .accessibilityLarge)
+                .previewLayout(.sizeThatFits)
+        }
     }
 }
