@@ -39,18 +39,25 @@ Remember tomorrow is another day.
 So eat well and get some rest.
 """
     var body: some View {
-        VStack {
-            Image(systemName: "hand.raised.fill")
-                .resizedToFill(width: 75, height: 75)
-                .foregroundColor(Color.purple)
-            Text("High Five!")
-                .font(.system(size: 35))
-                .fontWeight(.black)
-                .padding(.top, 8.0)
-            Text(message)
-                .foregroundColor(Color.gray)
-            .multilineTextAlignment(.center)
+        ZStack() {
+            VStack {
+                Image(systemName: "hand.raised.fill")
+                    .resizedToFill(width: 75, height: 75)
+                    .foregroundColor(Color.purple)
+                Text("High Five!")
+                    .font(.largeTitle)
+                    .fontWeight(.heavy)
+                Text(message)
+                    .foregroundColor(Color.gray)
+                .multilineTextAlignment(.center)
+            }
+            VStack {
+                Spacer()
+                Button("Continue") { }
+                    .padding()
+            }
         }
+        
     }
 }
 
