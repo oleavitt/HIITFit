@@ -28,47 +28,25 @@
 /// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 /// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-///
 /// THE SOFTWARE.
 
 import SwiftUI
-import AVKit
 
-struct ExerciseView: View {
-    let videoNames = ["squat", "step-up", "burpee", "sun-salute"]
-    let exerciseNames = ["Squat", "Step Up", "Burpee", "Sun Salute"]
-    let index: Int
-    let interval: TimeInterval = 30
-    
+struct RatingView: View {
     var body: some View {
-        GeometryReader { geometry in
-            VStack {
-                HeaderView(exerciseName: exerciseNames[index])
-                    .padding([.bottom])
-                if let url = Bundle.main.url(forResource: videoNames[index], withExtension: ".mp4") {
-                    VideoPlayer(player: AVPlayer(url: url))
-                        .frame(height: geometry.size.height * 0.45)
-                } else {
-                    Text("Couldn’t find \(videoNames[index]).mp4")
-                      .foregroundColor(.red)
-                }
-                Text(Date().addingTimeInterval(interval), style: .timer)
-                    .font(.system(size: 90))
-                Button("Start/Done") { }
-                    .font(.title3)
-                    .padding()
-                RatingView()
-                    .padding()
-                Spacer()
-                Button("History") { }
-                    .padding()
+        HStack {
+            ForEach(0 ..< 5) { _ in
+                Image(systemName: "waveform.path.ecg")
+                    .foregroundColor(.gray)
+                    .font(.largeTitle)
             }
         }
     }
 }
 
-struct ExerciseView_Previews: PreviewProvider {
+struct RatingView_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseView(index: 0)
+        RatingView()
+            .previewLayout(.sizeThatFits)
     }
 }
