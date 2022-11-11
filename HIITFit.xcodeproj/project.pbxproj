@@ -12,6 +12,7 @@
 		8C8F8E89291DBFFC00DB8320 /* squat.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8C8F8E8B291DBFFC00DB8320 /* squat.mp4 */; };
 		8C8F8E8C291DC00800DB8320 /* step-up.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8C8F8E8E291DC00800DB8320 /* step-up.mp4 */; };
 		8C8F8E8F291DC00D00DB8320 /* sun-salute.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8C8F8E91291DC00D00DB8320 /* sun-salute.mp4 */; };
+		8C8F8E93291E07D200DB8320 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8F8E92291E07D200DB8320 /* TimerView.swift */; };
 		8CA02E0E291B7E5400E17912 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA02E0D291B7E5400E17912 /* WelcomeView.swift */; };
 		8CA02E10291B7E6900E17912 /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA02E0F291B7E6900E17912 /* ExerciseView.swift */; };
 		8CA02E13291C4C3400E17912 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA02E12291C4C3400E17912 /* HeaderView.swift */; };
@@ -36,6 +37,7 @@
 		8C8F8E8A291DBFFC00DB8320 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = Base.lproj/squat.mp4; sourceTree = "<group>"; };
 		8C8F8E8D291DC00800DB8320 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = "Base.lproj/step-up.mp4"; sourceTree = "<group>"; };
 		8C8F8E90291DC00D00DB8320 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = "Base.lproj/sun-salute.mp4"; sourceTree = "<group>"; };
+		8C8F8E92291E07D200DB8320 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		8CA02E0D291B7E5400E17912 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		8CA02E0F291B7E6900E17912 /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
 		8CA02E12291C4C3400E17912 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				8CA02E16291CAA7500E17912 /* HistoryView.swift */,
 				8CEE0110291CB94C00AC441C /* SuccessView.swift */,
 				8CA02E12291C4C3400E17912 /* HeaderView.swift */,
+				8C8F8E92291E07D200DB8320 /* TimerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C8F8E93291E07D200DB8320 /* TimerView.swift in Sources */,
 				8CA02E10291B7E6900E17912 /* ExerciseView.swift in Sources */,
 				8CA02E0E291B7E5400E17912 /* WelcomeView.swift in Sources */,
 				8CEE0111291CB94C00AC441C /* SuccessView.swift in Sources */,

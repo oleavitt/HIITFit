@@ -38,12 +38,14 @@ struct ExerciseView: View {
     @Binding var selectedTab: Int
 
     let index: Int
-    let interval: TimeInterval = 30
     
     @State private var showHistory = false
     @State private var showSuccess = false
     @State private var rating = 0
     
+    @State private var timerDone = false
+    @State private var showTimer = false
+
     var lastExercise: Bool {
         index + 1 == Exercise.exercises.count
     }
@@ -62,26 +64,30 @@ struct ExerciseView: View {
                     Text("Couldn’t find \(exercise.videoName).mp4")
                       .foregroundColor(.red)
                 }
-                Text(Date().addingTimeInterval(interval), style: .timer)
-                    .font(.system(size: 90))
                 HStack(spacing: 150) {
-                    Button(NSLocalizedString("Start Exercise", comment: "begin exercise")) { }
+                    Button(NSLocalizedString("Start Exercise", comment: "begin exercise")) { showTimer.toggle() }
                     Button(NSLocalizedString("Done", comment: "mark as finished")) {
+                        timerDone = false
+                        showTimer.toggle()
                         if lastExercise {
                             showSuccess.toggle()
                         } else {
                             selectedTab += 1
                         }
                     }
+                    .disabled(!timerDone)
                     .sheet(isPresented: $showSuccess) {
                         SuccessView(selectedTab: $selectedTab)
                     }
                 }
                 .font(.title3)
                 .padding()
+                if showTimer {
+                    TimerView(timerDone: $timerDone)
+                }
+                Spacer()
                 RatingView(rating: $rating)
                     .padding()
-                Spacer()
                 Button(NSLocalizedString("History", comment: "view user history")) { showHistory.toggle() }
                     .padding()
                     .sheet(isPresented: $showHistory) {
