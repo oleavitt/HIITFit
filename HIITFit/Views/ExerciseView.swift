@@ -40,6 +40,8 @@ struct ExerciseView: View {
     let index: Int
     let interval: TimeInterval = 30
     
+    @State private var rating = 0
+    
     var lastExercise: Bool {
         index + 1 == Exercise.exercises.count
     }
@@ -68,7 +70,7 @@ struct ExerciseView: View {
                 }
                 .font(.title3)
                 .padding()
-                RatingView()
+                RatingView(rating: $rating)
                     .padding()
                 Spacer()
                 Button(NSLocalizedString("History", comment: "view user history")) { }
