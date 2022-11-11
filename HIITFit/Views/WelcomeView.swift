@@ -35,13 +35,20 @@ import SwiftUI
 struct WelcomeView: View {
     @Binding var selectedTab: Int
     
+    @State private var showHistory = false
+    
     var body: some View {
         ZStack {
             VStack {
                 HeaderView(selectedTab: $selectedTab,
                            titleText: NSLocalizedString("Welcome", comment: "greeting"))
                 Spacer()
-                Button(NSLocalizedString("History", comment: "view user history")) { }
+                Button(NSLocalizedString("History", comment: "view user history")) {
+                    showHistory.toggle()
+                }
+                .sheet(isPresented: $showHistory, content: {
+                    HistoryView(showHistory: $showHistory)
+                })
                     .padding(.bottom)
             }
             VStack {

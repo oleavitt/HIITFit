@@ -40,6 +40,7 @@ struct ExerciseView: View {
     let index: Int
     let interval: TimeInterval = 30
     
+    @State private var showHistory = false
     @State private var rating = 0
     
     var lastExercise: Bool {
@@ -73,8 +74,11 @@ struct ExerciseView: View {
                 RatingView(rating: $rating)
                     .padding()
                 Spacer()
-                Button(NSLocalizedString("History", comment: "view user history")) { }
+                Button(NSLocalizedString("History", comment: "view user history")) { showHistory.toggle() }
                     .padding()
+                    .sheet(isPresented: $showHistory) {
+                        HistoryView(showHistory: $showHistory)
+                    }
             }
         }
     }
