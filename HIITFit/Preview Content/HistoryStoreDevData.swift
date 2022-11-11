@@ -34,7 +34,7 @@ import Foundation
 
 // Mock test data for development
 extension HistoryStore {
-  mutating func createDevData() {
+  func createDevData() {
     // Development data
     exerciseDays = [
       ExerciseDay(

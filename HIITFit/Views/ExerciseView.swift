@@ -35,6 +35,7 @@ import SwiftUI
 import AVKit
 
 struct ExerciseView: View {
+    @EnvironmentObject var history: HistoryStore
     @Binding var selectedTab: Int
 
     let index: Int
@@ -67,6 +68,7 @@ struct ExerciseView: View {
                 HStack(spacing: 150) {
                     Button(NSLocalizedString("Start Exercise", comment: "begin exercise")) { showTimer.toggle() }
                     Button(NSLocalizedString("Done", comment: "mark as finished")) {
+                        history.addDoneExercise(exercise.exerciseName)
                         timerDone = false
                         showTimer.toggle()
                         if lastExercise {
@@ -100,6 +102,7 @@ struct ExerciseView: View {
 
 struct ExerciseView_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseView(selectedTab: .constant(3), index: 3)
+        ExerciseView(selectedTab: .constant(0), index: 0)
+            .environmentObject(HistoryStore())
     }
 }
