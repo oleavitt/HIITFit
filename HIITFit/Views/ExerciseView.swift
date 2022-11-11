@@ -42,7 +42,6 @@ struct ExerciseView: View {
     
     @State private var showHistory = false
     @State private var showSuccess = false
-    @State private var rating = 0
     
     @State private var timerDone = false
     @State private var showTimer = false
@@ -88,7 +87,7 @@ struct ExerciseView: View {
                     TimerView(timerDone: $timerDone)
                 }
                 Spacer()
-                RatingView(rating: $rating)
+                RatingView(exerciseIndex: index)
                     .padding()
                 Button(NSLocalizedString("History", comment: "view user history")) { showHistory.toggle() }
                     .padding()
