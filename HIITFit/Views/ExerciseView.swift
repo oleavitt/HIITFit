@@ -41,6 +41,7 @@ struct ExerciseView: View {
     let interval: TimeInterval = 30
     
     @State private var showHistory = false
+    @State private var showSuccess = false
     @State private var rating = 0
     
     var lastExercise: Bool {
@@ -66,7 +67,14 @@ struct ExerciseView: View {
                 HStack(spacing: 150) {
                     Button(NSLocalizedString("Start Exercise", comment: "begin exercise")) { }
                     Button(NSLocalizedString("Done", comment: "mark as finished")) {
-                        selectedTab = lastExercise ? 9 : selectedTab + 1
+                        if lastExercise {
+                            showSuccess.toggle()
+                        } else {
+                            selectedTab += 1
+                        }
+                    }
+                    .sheet(isPresented: $showSuccess) {
+                        SuccessView(selectedTab: $selectedTab)
                     }
                 }
                 .font(.title3)
@@ -86,6 +94,6 @@ struct ExerciseView: View {
 
 struct ExerciseView_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseView(selectedTab: .constant(1), index: 1)
+        ExerciseView(selectedTab: .constant(3), index: 3)
     }
 }
