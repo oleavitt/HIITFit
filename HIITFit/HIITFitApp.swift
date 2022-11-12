@@ -37,6 +37,13 @@ struct HIITFitApp: App {
   var body: some Scene {
     WindowGroup {
       ContentView()
+        #if DEBUG
+            .onAppear {
+                print(FileManager.default.urls(
+                    for: .documentDirectory,
+                    in: .userDomainMask))
+            }
+        #endif
     }
   }
 }
