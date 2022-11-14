@@ -50,6 +50,26 @@ struct ExerciseView: View {
         index + 1 == Exercise.exercises.count
     }
     
+    var startExerciseButton: some View {
+        RaisedButton(buttonText: NSLocalizedString("Start Exercise", comment: "begin exercise")) {
+            showTimer.toggle()
+        }
+    }
+
+    var historyButton: some View {
+        Button(
+            action: {
+                showHistory = true
+            },
+            label: {
+                Text(NSLocalizedString("History", comment: "view user history"))
+                    .fontWeight(.bold)
+                    .padding([.leading, .trailing], 5)
+            })
+        .padding(.bottom)
+        .buttonStyle(EmbossedButtonStyle())
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -65,7 +85,7 @@ struct ExerciseView: View {
                       .foregroundColor(.red)
                 }
                 HStack(spacing: 150) {
-                    Button(NSLocalizedString("Start Exercise", comment: "begin exercise")) { showTimer.toggle() }
+                    startExerciseButton
                     Button(NSLocalizedString("Done", comment: "mark as finished")) {
                         history.addDoneExercise(exercise.exerciseName)
                         timerDone = false
@@ -89,8 +109,7 @@ struct ExerciseView: View {
                 Spacer()
                 RatingView(exerciseIndex: index)
                     .padding()
-                Button(NSLocalizedString("History", comment: "view user history")) { showHistory.toggle() }
-                    .padding()
+                historyButton
                     .sheet(isPresented: $showHistory) {
                         HistoryView(showHistory: $showHistory)
                     }
