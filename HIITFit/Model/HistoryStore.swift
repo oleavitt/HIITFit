@@ -71,10 +71,60 @@ class HistoryStore: ObservableObject {
         } else {
             exerciseDays.insert(ExerciseDay(date: today, exercises: [exerciseName]), at: 0)
         }
+        
+        do {
+            try save()
+        } catch {
+            fatalError(error.localizedDescription)
+        }
     }
     
-    func load() throws {
-        throw FileError.loadFailure
+    private func getURL() -> URL? {
+        guard let documentsURL = FileManager.default.urls(
+            for: .documentDirectory,
+            in: .userDomainMask).first else {
+            return nil
+        }
+        return documentsURL.appendingPathComponent("history.plist")
+    }
+ 
+    private func save() throws {
+        guard let dataURL = getURL() else {
+            throw FileError.urlFailure
+        }
+        let plistData = exerciseDays.map {
+            [$0.id.uuidString, $0.date, $0.exercises]
+        }
+
+        do {
+            let data = try PropertyListSerialization.data(fromPropertyList: plistData,
+                                                          format: .binary,
+                                                          options: .zero)
+            try data.write(to: dataURL, options: .atomic)
+        } catch {
+            throw FileError.saveFailure
+        }
+    }
+
+    private func load() throws {
+        guard let dataURL = getURL() else {
+            throw FileError.urlFailure
+        }
+        guard let data = try? Data(contentsOf: dataURL) else {
+            return
+        }
+        do {
+            let plistData = try PropertyListSerialization.propertyList(from: data,
+                                                                       options: [],
+                                                                       format: nil)
+            let convertedData = plistData as? [[Any]] ?? []
+            exerciseDays = convertedData.map({
+                ExerciseDay(date: $0[1] as? Date ?? Date(),
+                            exercises: $0[2] as? [String] ?? [])
+            })
+        } catch {
+            throw FileError.loadFailure
+        }
     }
 }
 
