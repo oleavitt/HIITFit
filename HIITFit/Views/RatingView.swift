@@ -53,7 +53,7 @@ struct RatingView: View {
     
     var body: some View {
         HStack {
-            ForEach(1 ..< maximumRating + 1) { index in
+            ForEach(1 ..< maximumRating + 1, id: \.self) { index in
                 Button(
                     action: {
                         updateRating(index: index)

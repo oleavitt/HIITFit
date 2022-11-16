@@ -24,6 +24,9 @@
 		8CEE0113291CC72100AC441C /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEE0112291CC72100AC441C /* Exercise.swift */; };
 		8CEE0116291CCACB00AC441C /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEE0115291CCACB00AC441C /* HistoryStore.swift */; };
 		8CEE0118291CCCAF00AC441C /* HistoryStoreDevData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEE0117291CCCAF00AC441C /* HistoryStoreDevData.swift */; };
+		8CEF19B929244F52000C8A43 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF19B829244F52000C8A43 /* ContainerView.swift */; };
+		8CEF19BB29249B7F000C8A43 /* WelcomeImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF19BA29249B7F000C8A43 /* WelcomeImages.swift */; };
+		8CEF19BD2924A244000C8A43 /* GradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF19BC2924A244000C8A43 /* GradientBackground.swift */; };
 		CD30C924251474DC0049DB93 /* HIITFitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD30C923251474DC0049DB93 /* HIITFitApp.swift */; };
 		CD30C926251474DC0049DB93 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD30C925251474DC0049DB93 /* ContentView.swift */; };
 		CD30C928251474DD0049DB93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD30C927251474DD0049DB93 /* Assets.xcassets */; };
@@ -51,6 +54,9 @@
 		8CEE0112291CC72100AC441C /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		8CEE0115291CCACB00AC441C /* HistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStore.swift; sourceTree = "<group>"; };
 		8CEE0117291CCCAF00AC441C /* HistoryStoreDevData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStoreDevData.swift; sourceTree = "<group>"; };
+		8CEF19B829244F52000C8A43 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
+		8CEF19BA29249B7F000C8A43 /* WelcomeImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeImages.swift; sourceTree = "<group>"; };
+		8CEF19BC2924A244000C8A43 /* GradientBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackground.swift; sourceTree = "<group>"; };
 		CD30C920251474DC0049DB93 /* HIITFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HIITFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD30C923251474DC0049DB93 /* HIITFitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HIITFitApp.swift; sourceTree = "<group>"; };
 		CD30C925251474DC0049DB93 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -76,7 +82,9 @@
 			isa = PBXGroup;
 			children = (
 				CD30C925251474DC0049DB93 /* ContentView.swift */,
+				8CEF19B829244F52000C8A43 /* ContainerView.swift */,
 				8CA02E0D291B7E5400E17912 /* WelcomeView.swift */,
+				8CEF19BA29249B7F000C8A43 /* WelcomeImages.swift */,
 				8CA02E0F291B7E6900E17912 /* ExerciseView.swift */,
 				8CA02E14291C995900E17912 /* RatingView.swift */,
 				8CA02E16291CAA7500E17912 /* HistoryView.swift */,
@@ -85,6 +93,7 @@
 				8C8F8E92291E07D200DB8320 /* TimerView.swift */,
 				8CAC722A2921EED40090349B /* RaisedButton.swift */,
 				8CC5495929220026009445F5 /* EmbossedButton.swift */,
+				8CEF19BC2924A244000C8A43 /* GradientBackground.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -249,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CEF19BB29249B7F000C8A43 /* WelcomeImages.swift in Sources */,
 				8C8F8E93291E07D200DB8320 /* TimerView.swift in Sources */,
 				8CA02E10291B7E6900E17912 /* ExerciseView.swift in Sources */,
 				8CA02E0E291B7E5400E17912 /* WelcomeView.swift in Sources */,
@@ -258,12 +268,14 @@
 				8CEE0118291CCCAF00AC441C /* HistoryStoreDevData.swift in Sources */,
 				8CA02E15291C995900E17912 /* RatingView.swift in Sources */,
 				CD30C93F25147A8C0049DB93 /* DateExtension.swift in Sources */,
+				8CEF19B929244F52000C8A43 /* ContainerView.swift in Sources */,
 				8CEE0113291CC72100AC441C /* Exercise.swift in Sources */,
 				CD30C924251474DC0049DB93 /* HIITFitApp.swift in Sources */,
 				8CAC722B2921EED40090349B /* RaisedButton.swift in Sources */,
 				CD30C94025147A8C0049DB93 /* ImageExtension.swift in Sources */,
 				8CC5495A29220026009445F5 /* EmbossedButton.swift in Sources */,
 				8CA02E17291CAA7500E17912 /* HistoryView.swift in Sources */,
+				8CEF19BD2924A244000C8A43 /* GradientBackground.swift in Sources */,
 				8CA02E13291C4C3400E17912 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
