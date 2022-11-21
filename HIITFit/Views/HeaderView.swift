@@ -39,16 +39,23 @@ struct HeaderView: View {
         VStack {
             Text(titleText)
                 .font(.largeTitle)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
             HStack {
                 ForEach(0 ..< Exercise.exercises.count, id: \.self) { index in
-                    let fill = index == selectedTab ? ".fill" : ""
-                    Image(systemName: "\(index + 1).circle\(fill)")
+                    ZStack {
+                        Circle()
+                            .frame(width: 30, height: 30)
+                            .opacity(index == selectedTab ? 0.5 : 0.0)
+                        Circle()
+                            .frame(width: 15, height: 15)
+                    }
+                        .foregroundColor(.white)
                         .onTapGesture {
                             selectedTab = index
-                        }
+                    }
                 }
             }
-            .font(.title2)
         }
     }
 }
@@ -56,12 +63,20 @@ struct HeaderView: View {
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            HeaderView(selectedTab: .constant(0), titleText: "Squat")
-                .previewLayout(.sizeThatFits)
-            HeaderView(selectedTab: .constant(1), titleText: "Step Up")
-                .preferredColorScheme(.dark)
-                .environment(\.sizeCategory, .accessibilityLarge)
-                .previewLayout(.sizeThatFits)
+            ZStack {
+                GradientBackground()
+                HeaderView(selectedTab: .constant(0), titleText: "Squat")
+                    
+            }
+            .previewLayout(.sizeThatFits)
+            
+            ZStack {
+                GradientBackground()
+                HeaderView(selectedTab: .constant(1), titleText: "Step Up")
+            }
+            .preferredColorScheme(.dark)
+            .environment(\.sizeCategory, .accessibilityLarge)
+            .previewLayout(.sizeThatFits)
         }
     }
 }

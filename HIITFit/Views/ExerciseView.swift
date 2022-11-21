@@ -77,42 +77,51 @@ struct ExerciseView: View {
                 HeaderView(selectedTab: $selectedTab,
                            titleText: exercise.exerciseName)
                     .padding([.bottom])
-                if let url = Bundle.main.url(forResource: exercise.videoName, withExtension: ".mp4") {
-                    VideoPlayer(player: AVPlayer(url: url))
-                        .frame(height: geometry.size.height * 0.45)
-                } else {
-                    Text("Couldn’t find \(exercise.videoName).mp4")
-                      .foregroundColor(.red)
-                }
-                HStack(spacing: 150) {
-                    startExerciseButton
-                    Button(NSLocalizedString("Done", comment: "mark as finished")) {
-                        history.addDoneExercise(exercise.exerciseName)
-                        timerDone = false
-                        showTimer.toggle()
-                        if lastExercise {
-                            showSuccess.toggle()
-                        } else {
-                            selectedTab += 1
-                        }
-                    }
-                    .disabled(!timerDone)
-                    .sheet(isPresented: $showSuccess) {
-                        SuccessView(selectedTab: $selectedTab)
-                    }
-                }
-                .font(.title3)
-                .padding()
-                if showTimer {
-                    TimerView(timerDone: $timerDone)
-                }
                 Spacer()
-                RatingView(exerciseIndex: index)
-                    .padding()
-                historyButton
-                    .sheet(isPresented: $showHistory) {
-                        HistoryView(showHistory: $showHistory)
+                ContainerView {
+                    VStack {
+                        if let url = Bundle.main.url(forResource: exercise.videoName, withExtension: ".mp4") {
+                            VideoPlayer(player: AVPlayer(url: url))
+                                .frame(height: geometry.size.width * 0.54)
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
+                                .padding(20)
+                        } else {
+                            Text("Couldn’t find \(exercise.videoName).mp4")
+                                .foregroundColor(.red)
+                                .padding([.top, .bottom], 50)
+                        }
+                        HStack(spacing: 150) {
+                            startExerciseButton
+                            Button(NSLocalizedString("Done", comment: "mark as finished")) {
+                                history.addDoneExercise(exercise.exerciseName)
+                                timerDone = false
+                                showTimer.toggle()
+                                if lastExercise {
+                                    showSuccess.toggle()
+                                } else {
+                                    selectedTab += 1
+                                }
+                            }
+                            .disabled(!timerDone)
+                            .sheet(isPresented: $showSuccess) {
+                                SuccessView(selectedTab: $selectedTab)
+                            }
+                        }
+                        .font(.title3)
+                        .padding()
+                        if showTimer {
+                            TimerView(timerDone: $timerDone)
+                        }
+                        Spacer()
+                        RatingView(exerciseIndex: index)
+                            .padding()
+                        historyButton
+                            .sheet(isPresented: $showHistory) {
+                                HistoryView(showHistory: $showHistory)
+                            }
                     }
+                }
+                .frame(height: geometry.size.height * 0.8)
             }
         }
     }
